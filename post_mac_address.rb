@@ -11,8 +11,9 @@ def fetch_mac_address_list
   devices.map{|i| i[1]}
 end
 
-url = 'http://localhost:7777/kintai_status'
-puts mac_address_list = fetch_mac_address_list
+url = ENV['AUTO_KINTAI_APP_DOMAIN'] + '/kintai_status'
+mac_address_list = fetch_mac_address_list
+
 data = { mac_address_list: mac_address_list.join(',') }
 
 def post_data(url, data)
